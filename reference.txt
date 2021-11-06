@@ -1,0 +1,11 @@
+p5.js Practice
+
+ellipse(xcord,ycord,w,h)
+
+let poop = 0; //Scoped to the brackets
+var poopy = "ligma"; //Scoped to the function.
+
+print("ligma") // prints to the console.
+
+https://p5js.org/examples/input-easing.html
+https://p5js.org/examples/image-transparency.html
