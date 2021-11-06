@@ -54,12 +54,16 @@ function preload() {
 
 function setup() {
     createCanvas(1280, 720);
-    imgText = new LoadedImage(loadedText, 392  * 0.8, 498 * 0.8, loadedText.width * 0.8, loadedText * 0.8, 0.05, 0.05)
+    imgText = new LoadedImage(loadedText, 392  * 0.8, 498 * 0.8, loadedText.width * 0.8, loadedText * 0.8, 0.05, 0.04)
     imgText.allowTint = true
-    imgBG = new LoadedImage(loadedImgBG, 0, -height, loadedImgBG.width * 0.8, loadedImgBG.height * 0.8)
-    imgBlackBG = new LoadedImage(loadedBlackBG, 0, -height, loadedBlackBG.width * 0.8, loadedBlackBG.height * 0.8)
+
+    imgBG = new LoadedImage(loadedImgBG, 0, -height * 5, loadedImgBG.width * 0.8, loadedImgBG.height * 0.8)
+    imgBlackBG = new LoadedImage(loadedBlackBG, 0, -height * 4, loadedBlackBG.width * 0.8, loadedBlackBG.height * 0.8)
     imgSnow = new LoadedImage(loadedSnowBG, 0, -height, loadedSnowBG.width * 0.8, loadedSnowBG.height * 0.8)
-    imgSnow2 = new LoadedImage(loadedSnowBG, 0, (-height) * 2, loadedSnowBG.width * 0.8, loadedSnowBG.height * 0.8)
+    imgSnow2 = new LoadedImage(loadedSnowBG, 0, (-height) * 3, loadedSnowBG.width * 0.8, loadedSnowBG.height * 0.8)
+    imgSnow3 = new LoadedImage(loadedSnowBG, 0, (-height) * 2, loadedSnowBG.width * 0.8, loadedSnowBG.height * 0.8)
+    scrollingBG = new ScrollingBG([imgBG, imgBlackBG, imgSnow , imgSnow2, imgSnow3], 10, 0.1, 0.04)
+
     imgBigMountain = new LoadedImage(loadedBigMountain, 274 * 0.8, 188 * 0.8, loadedBigMountain.width * 0.8, loadedBigMountain.height * 0.8, 0.02, 0.02)
     imgBigMountain.allowTint = true
     imgLeftMountain = new LoadedImage(loadedLeftMountain, 0, 273*0.8, loadedLeftMountain.width*0.8, loadedLeftMountain.height*0.8, 0.01, 0.01)
@@ -86,13 +90,11 @@ function draw() {
     if (!moveBG) {
         background(0)
     }
-    if (moveBG && imgBG.yloc !== 0) {
-        EpicStuff.startMoveBackground(i)
+    if (moveBG && !scrollingBG.stopped) {
+        // EpicStuff.startMoveBackground(i)
+        scrollingBG.scroll()
     }
-    if (imgBG.yloc === 0) {
-        finishedScrolling = true
-    }
-    if (moveBG && finishedScrolling) {
+    if (scrollingBG.stopped) {
         imgBG.draw()
         imgLeftMountain.setTint(255, tintNum)
         imgLeftMountain.draw()
