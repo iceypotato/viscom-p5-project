@@ -20,7 +20,7 @@ function controls() {
     if (keyDown(68) && !keyDown(65)) {
         player.moveRight()
     }
-    if (!keyDown(65) && !keyDown(68) && !keyDown(32)) {
+    if ((!keyDown(65) && !keyDown(68)) || (keyDown(65) && keyDown(68))) {
         player.resetToIdle()
     }
     if (player.isFalling) {

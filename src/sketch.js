@@ -43,8 +43,8 @@ function setup() {
 
     scrollingBG = new ScrollingBG([imgBG, imgBlackBG, imgSnow , imgSnow2, imgSnow3], 10, 0.1, 0.04)
 
-    // player = new Player(createSprite(0-playerSprite.getWidth()/2, height-playerSprite.getHeight()/2)) 
-    player = new Player(createSprite(width/2, height/2), 0.5, 1, 0.5, 1, 10, 10) 
+    player = new Player(createSprite(0-playerSprite.getWidth()/2, height-playerSprite.getHeight()/2), 0.4, 5, 0.5, 10, 10, 10, 15) 
+    // player = new Player(createSprite(width/2, height/2), 0.5, 5, 0.5, 10, 10, 8, 15) 
     // player.addAnimation('idle', playerSprite)
     // player.setDefaultCollider()
     player.sprite.addAnimation('idle', playerSprite)
@@ -109,9 +109,9 @@ function draw() {
         
     }
     if (enableControls) {
-        
+        controls()
     }
-    controls()
+    
     drawSprite(player.sprite)
 
 }

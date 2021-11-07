@@ -1,15 +1,18 @@
 class Player {
 
-    constructor(sprite, gravity, maxMoveVelX, accelX, accelY, jumpHeight, maxFallVel) {
+    constructor(sprite, gravity, maxMoveVelX, accelX, jumpAccel, maxJumpSpeed, maxFallVel, jumpHeight) {
         this.sprite = sprite
         this.gravity = gravity
         this.maxMoveVelX = maxMoveVelX
         this.accelX = accelX
-        this.accelY = accelY
-        this.jumpHeight = jumpHeight
+        this.jumpAccel = jumpAccel
+        this.maxJumpSpeed = maxJumpSpeed
         this.maxFallVel = maxFallVel
+        this.jumpHeight = jumpHeight
+
         this.currentVelX = 0
         this.currentVelY = 0
+        this.jumpDistance = 0
         this.previousVelocity = null
         this.isFalling = false
         this.isCurrentlyJumping = false
@@ -20,20 +23,21 @@ class Player {
     }
 
     jump() {
-
-        if (this.currentVelY > -this.jumpHeight && !this.isFalling) {
+        if (this.currentVelY > -this.maxJumpSpeed && !this.isFalling) {
             this.isCurrentlyJumping = true
-            this.currentVelY -= this.accelY
-            if (this.currentVelY <= -this.jumpHeight) {
-                this.isFalling = true
-                this.isCurrentlyJumping = false
-            }
+            this.currentVelY -= this.jumpAccel
+        }
+        this.jumpDistance += Math.abs(this.currentVelY)
+        if (this.jumpDistance > this.jumpHeight) {
+            this.isFalling = true
+            this.isCurrentlyJumping = false
+            this.jumpDistance = 0
         }
         this.sprite.setVelocity(this.currentVelX, this.currentVelY)
     }
 
     fall() {
-        if (this.sprite.position.y >= height - 200 ) {
+        if (this.sprite.position.y >= height - this.sprite.width/2) {
             this.currentVelY = 0
             this.sprite.setVelocity(this.currentVelX, this.currentVelY)
             this.isFalling = false
