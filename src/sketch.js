@@ -44,7 +44,7 @@ function setup() {
     scrollingBG = new ScrollingBG([imgBG, imgBlackBG, imgSnow , imgSnow2, imgSnow3], 10, 0.1, 0.04)
 
     // player = new Player(createSprite(0-playerSprite.getWidth()/2, height-playerSprite.getHeight()/2)) 
-    player = new Player(createSprite(width/2, height/2, playerSprite.getWidth() * 2, playerSprite.getHeight() * 2), 0.01, 5, 5, 0.5, 0.5) 
+    player = new Player(createSprite(width/2, height/2), 0.5, 1, 0.5, 1, 10, 10) 
     // player.addAnimation('idle', playerSprite)
     // player.setDefaultCollider()
     player.sprite.addAnimation('idle', playerSprite)
@@ -57,6 +57,7 @@ let tintNum = 0
 let hasStarted = false
 let hasScrolled = false
 let showPoster = false
+let enableControls = false
 function draw() {
     // let v1 = createVector(40, 50);
     // let v2 = createVector(40, 50);
@@ -107,20 +108,10 @@ function draw() {
         imgText.draw()
         
     }
-    enableControls()
+    if (enableControls) {
+        
+    }
+    controls()
     drawSprite(player.sprite)
 
-}
-
-
-function enableControls() {
-    if ((!keyDown(65) && !keyDown(68)) || (keyDown(65) && keyDown(68))) {
-        player.resetToIdle()
-    }
-    else if (keyDown(65)) {
-        player.moveLeft()
-    }
-    else if (keyDown(68)) {
-        player.moveRight()
-    }
 }

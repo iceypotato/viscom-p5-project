@@ -8,11 +8,22 @@ function keyPressed() {
         sndCelesteBSideComplete.play()
         hasStarted = true
     }
+}
 
-    // if (keyWentUp(65)) {
-    //     player.setSpeed(0, 0)
-    // }
-    // if (keyWentUp(68)) {
-    //     player.setSpeed(0, 0)
-    // }
+function controls() {
+    if (keyWentDown(32) || player.isCurrentlyJumping) {
+        player.jump()
+    }
+    if (keyDown(65) && !keyDown(68)) {
+        player.moveLeft()
+    }
+    if (keyDown(68) && !keyDown(65)) {
+        player.moveRight()
+    }
+    if (!keyDown(65) && !keyDown(68) && !keyDown(32)) {
+        player.resetToIdle()
+    }
+    if (player.isFalling) {
+        player.fall()
+    }
 }
