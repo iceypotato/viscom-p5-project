@@ -1,38 +1,17 @@
-// let x;
-// let y;
-// let destinationX;
-// let maxVel = 5
-// let curVel = 0
-// let accel = 0.05
-// let easing = 0.01
+// let a = 0
+// let b = 0
+// let c = 0
+// function draw() {
+    
+//     background(255,255,255)
+//     colorMode(HSB)
+//     if (a>255) a=0
+//     if (b>255) b=0
+//     if (c>255) c=0
+//     tint(v1=a,v2=255,v3=255)
+//     strawberry.draw()
+//     a++
+//     b++
+//     c++
 
-// function setup2() {
-//   createCanvas(2000, 600);
-//   x = 0
-//   y = height/2
-//   destinationX = width
-// }
-
-// let slowing = false
-// let stop = false
-// function draw2() {
-//   background(50,75,255);
-//   if (x > width - 300) {
-//     curVel -= accel
-//     if (curVel < accel) {
-//       slowing = true
-//       curVel = accel
-//     }
-//   }
-//   else if (curVel < maxVel && !slowing) {
-//     curVel += accel
-//   }
-//   if (x > width) {
-//     stop = true
-//     curVel = 0
-//   }
-//   x += curVel
-//   console.log(curVel)
-//   ellipse(x, y, 50, 50)
-  
 // }

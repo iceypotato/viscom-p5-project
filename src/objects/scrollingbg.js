@@ -20,6 +20,7 @@ class ScrollingBG {
     scroll() {
         if (this.imgs[0].yloc > this.stopDistance) {
             this.curVel -= this.accelOut
+            // console.log(this.curVel)
             if (this.curVel < 1) {
                 this.curVel = 1
             }
@@ -41,6 +42,16 @@ class ScrollingBG {
             this.stopped = true
         }
         // console.log(this.highestImageDistance + ' ' + this.curVel)
+    }
+
+    _calcStopDistance() {
+        let temp = this.curVel
+        let i = 0
+        while (temp > 0) {
+            temp -= this.accelOut
+            i += this.accelOut
+        }
+        return i
     }
 
     _highestImage() {
