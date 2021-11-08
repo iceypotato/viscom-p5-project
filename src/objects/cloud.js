@@ -6,7 +6,7 @@ class Cloud {
 
     draw() {
         this.loadedImg.allowTint = true
-        this.loadedImg.setTint(255, 255, 255, 100)
+        this.loadedImg.setTint(255, 255, 255, 200)
         this.loadedImg.draw()
         this.loadedImg.xloc += this.velocity
         if (this.loadedImg.xloc > width) {
