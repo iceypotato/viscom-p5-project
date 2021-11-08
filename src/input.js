@@ -1,5 +1,5 @@
 function mouseClicked() {
-
+    console.log(mouseX, mouseY)
 }
 
 function keyPressed() {
@@ -11,8 +11,16 @@ function keyPressed() {
 }
 
 function controls() {
+    // console.log(player.currentVelY + " " + player.sprite.touching.bottom)
+    // console.log(player.sprite.position)
+    if (keyWentDown('j') || player.isCurrentlyDashing) {
+        player.dash()
+    }
     if (keyWentDown(32) || player.isCurrentlyJumping) {
         player.jump()
+    }
+    else {
+        player.fall()
     }
     if (keyDown(65) && !keyDown(68)) {
         player.moveLeft()
@@ -23,7 +31,7 @@ function controls() {
     if ((!keyDown(65) && !keyDown(68)) || (keyDown(65) && keyDown(68))) {
         player.resetToIdle()
     }
-    if (player.isFalling) {
-        player.fall()
-    }
+
+    
+    // if (player.sprite.touching.bottom)
 }

@@ -11,7 +11,8 @@ let sndCelesteBSideComplete;
 let loadedCloud1;
 let loadedCloud2;
 let loadedCloud3;
-let playerSprite;
+let playerImage
+let platformImage
 
 function preload() {
     // font = loadFont(comicSansReg)
@@ -26,7 +27,7 @@ function preload() {
     loadedRightMountain = loadImage('assets/image/right mountain.png')
     loadedBigMountain = loadImage('assets/image/middle mountain.png')
 
-    loadedStrawberryImg = loadImage('assets/image/strawberry.png')
+    loadedStrawberryImg = loadAnimation('assets/image/strawberry.png')
 
     loadedCloud1 = loadImage('assets/image/cloud.png')
     loadedCloud2 = loadImage('assets/image/cloud 2.png')
@@ -34,10 +35,13 @@ function preload() {
 
     soundFormats('wav', 'ogg', 'mp3')
     sndCelesteBSideComplete = loadSound('assets/mus/celeste bside chapter complete.wav') // Source: Celeste B Side Complete
+    sndStrawberryGet = loadSound('assets/mus/game_gen_strawberry_red_get_1000.wav')
+    sndCrystalHeartGet = loadSound('assets/mus/crystal heart get.wav')
 
-    playerSprite = loadAnimation('assets/player/player.png')
+    playerImage = loadAnimation('assets/player/player.png')
 
+    platformImage = loadAnimation('assets/platform/platform.png')
     
-    
+    groundImage = loadAnimation('assets/platform/ground.png')
     
 }
